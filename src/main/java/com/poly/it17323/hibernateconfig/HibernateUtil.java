@@ -4,6 +4,8 @@
  */
 package com.poly.it17323.hibernateconfig;
 
+import com.poly.it17323.domainmodel.Category;
+import com.poly.it17323.domainmodel.Product;
 import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -31,6 +33,8 @@ public class HibernateUtil {
         properties.put(Environment.SHOW_SQL, "true");
 
         conf.setProperties(properties);
+        conf.addAnnotatedClass(Category.class);
+        conf.addAnnotatedClass(Product.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
